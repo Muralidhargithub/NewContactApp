@@ -14,7 +14,7 @@ struct ContentView: View {
     @State private var firstName: String = ""
     @State private var lastName: String = ""
     @State private var company: String = ""
-    @State private var phoneNumbers: [String] = []
+    @State private var phoneNumbers: [String] = [""]
     @State private var emails: [String] = []
     @State private var pronouns: [String] = []
     @State private var url: [String] = []
@@ -98,16 +98,18 @@ struct ContentView: View {
                     Button("Add Field") {}
                 }
             }
+            
             .navigationBarTitle("New Contact", displayMode: .inline)
             .navigationBarItems(
                 leading: Button("Cancel", action: { }),
                 trailing: Button("Done", action: {
-                    saveContact() 
+                    saveContact()
                 })
             )
             .sheet(isPresented: $showContactsList) {
                 ContactListView(contacts: $contacts)
             }
+         
         }
     }
 
